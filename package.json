@@ -1,0 +1,12 @@
+{
+  "name": "devaloy-mandir",
+  "version": "1.0.0",
+  "description": "Devaloy Mandir Landing Page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

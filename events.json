@@ -1,0 +1,50 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Full Moon Meditation",
+      "date": "Feb 2",
+      "day": "Wednesday",
+      "time": "7:00 PM - 8:30 PM",
+      "description": "Join us for a special guided meditation under the full moon, honoring the cycles of nature and spiritual renewal.",
+      "learnMore": true
+    },
+    {
+      "id": 2,
+      "title": "Monthly Charity Drive",
+      "date": "Jan 22",
+      "day": "Wednesday",
+      "time": "10:00 AM - 2:00 PM",
+      "description": "Help us support local families in need. Donate goods, volunteer your time, or contribute financially to our cause.",
+      "learnMore": true
+    },
+    {
+      "id": 3,
+      "title": "Spiritual Philosophy Workshop",
+      "date": "Feb 1",
+      "day": "Saturday",
+      "time": "2:00 PM - 4:00 PM",
+      "description": "Explore ancient wisdom traditions and modern applications. Led by experienced spiritual teachers and community leaders.",
+      "learnMore": true
+    },
+    {
+      "id": 4,
+      "title": "Love & Compassion Celebration",
+      "date": "Feb 14",
+      "day": "Friday",
+      "time": "6:00 PM - 9:00 PM",
+      "description": "A special evening celebrating love, compassion, and connection with music, food, and spiritual practices for all.",
+      "learnMore": true
+    },
+    {
+        "id": 5,
+      "title": "Welcome session & new Opening",
+      "date": "Feb 2",
+      "day": "Monday",
+      "time": "9:00 PM - 5:00 PM",
+      "description": "A special morning celebrating love, compassion, and connection with music, food, and spiritual practices for all.",
+      "learnMore": true
+    }
+  ]
+}
+

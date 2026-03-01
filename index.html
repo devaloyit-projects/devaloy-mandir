@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devaloy Mandir - Community & Spiritual Home</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="flyer-popup" id="flyerPopup" role="dialog" aria-modal="true" aria-label="Fundraiser announcement">
+        <div class="flyer-popup-content">
+            <button type="button" class="flyer-close" id="flyerCloseBtn" aria-label="Close announcement">×</button>
+            <img
+                src="Media/IMG_5506.PNG"
+                alt="Devaloy Mandir transformation fundraiser flyer"
+                class="flyer-image"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+            <div class="flyer-fallback" style="display:none;">
+                Add your flyer image at <code>Media/IMG_5506.PNG</code> to show this popup.
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav aria-label="Primary">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Devaloy Mandir</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#aims">Aims & Objective</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#donate">Donate</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="Media/IMG_1811.mov" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <span class="hero-badge">Community Spiritual Center</span>
+            <h1>Welcome to Devaloy Mandir</h1>
+            <p>A sacred space for spiritual growth, community connection, and inner peace</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" id="heroDonateBtn" type="button">Donate Now</button>
+                <button class="btn btn-secondary" id="heroFindBtn" type="button">Find Us</button>
+            </div>
+            <div class="hero-stats" aria-label="Temple Highlights">
+                <div class="stat-card"><strong>7</strong><span>Days Open</span></div>
+                <div class="stat-card"><strong>20+</strong><span>Monthly Activities</span></div>
+                <div class="stat-card"><strong>All Ages</strong><span>Welcomed</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Our Temple</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Our Mission</h3>
+<p>Devaloy Mandir is dedicated to providing a welcoming sanctuary for individuals seeking spiritual development and community support. We believe in fostering compassion, wisdom, and inner peace.</p>
+                <p>Our community gatherings, meditation sessions, and educational programs are designed to help members of all backgrounds discover their spiritual path and connect with like-minded individuals.</p>
+            </div>
+            <div class="about-image">
+                <img src="Media/IMG_8976.JPG" alt="Devaloy Mandir mission">
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities">
+        <h2>Our Activities</h2>
+        <div class="features">
+            <div class="feature-card" style="background-image: url('Media/IMG_4342.jpeg');">
+                <h3>Meditation & Prayer</h3>
+                <p>Daily guided meditation sessions and prayer circles to foster inner peace and spiritual connection.</p>
+            </div>
+            <div class="feature-card" style="background-image: url('Media/IMG_8976.JPG');">
+                <h3>Spiritual Education</h3>
+                <p>Classes and workshops on ancient wisdom traditions, philosophy, and personal growth.</p>
+            </div>
+            <div class="feature-card" style="background-image: url('Media/IMG_5506.PNG');">
+                <h3>Community Programs</h3>
+                <p>Outreach initiatives, charity events, and community service opportunities for all members.</p>
+            </div>
+            <div class="feature-card" style="background-image: url('Media/IMG_4342.jpeg');">
+                <h3>Celebrations & Events</h3>
+                <p>Special ceremonies, festivals, and gatherings throughout the year celebrating spiritual milestones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aims & Objectives Section -->
+    <section id="aims">
+        <h2>Aims & Objectives</h2>
+        <div class="aims-content">
+            <div class="aims-grid">
+                <div class="aim-card">
+                    <h3>Spiritual Growth</h3>
+                    <p>Foster individual spiritual development through meditation, prayer, and self-discovery practices accessible to all members.</p>
+                </div>
+                <div class="aim-card">
+                    <h3>Preserve Traditions</h3>
+                    <p>Maintain and celebrate sacred cultural and spiritual traditions while adapting to modern community needs.</p>
+                </div>
+                <div class="aim-card">
+                    <h3>Community Service</h3>
+                    <p>Serve the wider community through charitable programs, outreach initiatives, and support for those in need.</p>
+                </div>
+                <div class="aim-card">
+                    <h3>Unity & Harmony</h3>
+                    <p>Create an inclusive, welcoming space where people of all backgrounds can come together in peace and mutual respect.</p>
+                </div>
+                <div class="aim-card">
+                    <h3>Education & Wisdom</h3>
+                    <p>Provide educational programs and workshops that deepen understanding of spiritual philosophy and personal growth.</p>
+                </div>
+                <div class="aim-card">
+                    <h3>Transform Lives</h3>
+                    <p>Empower individuals to discover their purpose, achieve inner peace, and contribute positively to society.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <p class="section-subtitle">Join us for spiritual gatherings and community celebrations</p>
+        <div class="events-grid" id="eventsGrid">
+            <!-- Events will be loaded dynamically via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <p style="text-align: center; color: var(--color-text); margin-bottom: 2rem;">Explore moments from our temple, events, and community gatherings</p>
+        <div class="gallery-carousel" id="galleryCarousel">
+            <button class="gallery-nav prev" id="galleryPrev" type="button" aria-label="Previous gallery slide">‹</button>
+            <div class="gallery-viewport">
+                <div class="gallery-track" id="galleryTrack">
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><img src="Media/IMG_4342.jpeg"></div>
+                            <h3>Main Prayer Hall</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><img src="Media/IMG_4814.JPG"></div>
+                            <h3>Cultural Festivities</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><img src="Media/IMG_1882.jpeg"></div>
+                            <h3>Community Gathering</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><img src="Media/IMG_8976.JPG"></div>
+                            <h3>Durga Puja Celebration</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><img src="Media/IMG_6373.jpeg"></div>
+                            <h3>Temple Premises</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><img src="Media/IMG_6401.jpeg"></div>
+                            <h3>Charitable Service</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="gallery-nav next" id="galleryNext" type="button" aria-label="Next gallery slide">›</button>
+            <div class="gallery-dots" id="galleryDots" aria-label="Gallery slide navigation"></div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <h2>Visit Us</h2>
+        <div class="location-container">
+            <div class="location-info">
+                <h3>Temple Location</h3>
+                <div class="info-item">
+                    <div class="info-label">
+                        Address
+                    </div>
+                    <div class="info-text">8529 Commonwealth Blvd<br>Bellerose, NY 11426</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        Phone
+                    </div>
+                    <div class="info-text">(917) 217-8885</div>
+                </div>
+<div class="info-item">
+                    <div class="info-label">
+                        Email
+                    </div>
+                    <div class="info-text">contact@devaloymandir.org</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        Hours
+                    </div>
+                    <div class="info-text">Monday - Friday: 6 AM - 9 PM<br>Saturday - Sunday: 8 AM - 8 PM</div>
+                </div>
+            </div>
+            <div class="map-embed" aria-label="Google map for 85-29 Commonwealth Blvd, Bellerose, NY 11426">
+                <iframe
+                    title="Devaloy Mandir map location"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426&output=embed">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="donation-section">
+        <h2>Support Our Mission</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.1rem;">Your generous donation helps us maintain our temple, support community programs, and serve those in need.</p>
+        
+        <form class="donation-form" id="donationForm">
+            <div class="form-group">
+                <label>Select Amount</label>
+                <div class="amount-options">
+                    <button type="button" class="amount-btn" data-amount="25">$25</button>
+                    <button type="button" class="amount-btn" data-amount="50">$50</button>
+                    <button type="button" class="amount-btn" data-amount="100">$100</button>
+                    <button type="button" class="amount-btn" data-amount="250">$250</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="customAmount">Custom Amount ($)</label>
+                <input type="number" id="customAmount" name="customAmount" placeholder="Enter custom amount" min="1" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="donorName">Full Name</label>
+                <input type="text" id="donorName" name="donorName" placeholder="Your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="donorEmail">Email Address</label>
+                <input type="email" id="donorEmail" name="donorEmail" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="donationType">Donation Type</label>
+                <select id="donationType" name="donationType" required>
+                    <option value="one-time">One-Time Donation</option>
+                    <option value="monthly">Monthly Recurring</option>
+                    <option value="yearly">Yearly Recurring</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Complete Donation</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#about">Our Mission</a></li>
+                    <li><a href="#activities">Services</a></li>
+                    <li><a href="#location">Location</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Join Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:5551234567">(917) 217-8885</a></li>
+                    <li><a href="mailto:contact@devaloymandir.org">contact@devaloymandir.org</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.8);">Subscribe for updates and spiritual wisdom.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <input type="email" placeholder="Your email" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Devaloy Mandir. All rights reserved. Built with compassion and care.</p>
+        </div>
+    </footer>
+    </main>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll progress bar
+            const scrollProgress = document.createElement('div');
+            scrollProgress.className = 'scroll-progress';
+            document.body.appendChild(scrollProgress);
+
+            // Add back to top button
+            const backToTop = document.createElement('button');
+            backToTop.className = 'back-to-top';
+            backToTop.innerHTML = '↑';
+            backToTop.setAttribute('aria-label', 'Back to top');
+            document.body.appendChild(backToTop);
+
+            // Scroll progress update
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                scrollProgress.style.width = scrollPercent + '%';
+
+                // Back to top button visibility
+                if (scrollTop > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+
+                // Navbar scroll effect
+                const nav = document.querySelector('nav');
+                if (scrollTop > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // Back to top click handler
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const heroDonateBtn = document.getElementById('heroDonateBtn');
+            const heroFindBtn = document.getElementById('heroFindBtn');
+            const donationForm = document.getElementById('donationForm');
+            const mapUrl = 'https://www.google.com/maps/search/?api=1&query=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426';
+            const flyerPopup = document.getElementById('flyerPopup');
+            const flyerCloseBtn = document.getElementById('flyerCloseBtn');
+
+            function closeFlyerPopup() {
+                flyerPopup?.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+
+            function openFlyerPopup() {
+                flyerPopup?.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            openFlyerPopup();
+            flyerCloseBtn?.addEventListener('click', closeFlyerPopup);
+            flyerPopup?.addEventListener('click', (event) => {
+                if (event.target === flyerPopup) closeFlyerPopup();
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeFlyerPopup();
+            });
+
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                const isExpanded = hamburger.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', String(isExpanded));
+                document.body.style.overflow = isExpanded ? 'hidden' : '';
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+            hamburger.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleMenu();
+                }
+            });
+
+            // Close menu when link is clicked
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Smooth scroll
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            heroDonateBtn?.addEventListener('click', () => scrollToSection('donate'));
+            heroFindBtn?.addEventListener('click', () => window.open(mapUrl, '_blank'));
+
+            // Donation amount selection
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('customAmount').value = this.dataset.amount;
+                });
+            });
+
+            // Handle donation form submission
+            function handleDonation(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('donorName').value;
+                const email = document.getElementById('donorEmail').value;
+                const amount = document.getElementById('customAmount').value;
+                const type = document.getElementById('donationType').value;
+
+                if (!amount || amount <= 0) {
+                    alert('Please select or enter a donation amount');
+                    return;
+                }
+
+                // Success message
+                alert(`Thank you, ${name}! Your generous donation of $${parseFloat(amount).toFixed(2)} (${type}) has been received. We'll send a confirmation to ${email}. 🙏`);
+
+                // Reset form
+                event.target.reset();
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+            }
+            donationForm?.addEventListener('submit', handleDonation);
+
+            // Scroll reveal animation observer
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .about-text, .about-image, .feature-card, .location-info, .map-embed, .donation-form, .aim-card, .event-card, .gallery-item, .footer-section, .footer-bottom, h2, .section-subtitle');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // Add stagger animation to cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+
+            const aimCards = document.querySelectorAll('.aim-card');
+            aimCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                item.style.transitionDelay = `${index * 0.1}s`;
+            });
+
+            // Enhanced hover effects for gallery items
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+
+            // Gallery carousel
+            const galleryTrack = document.getElementById('galleryTrack');
+            const galleryPrev = document.getElementById('galleryPrev');
+            const galleryNext = document.getElementById('galleryNext');
+            const galleryDots = document.getElementById('galleryDots');
+            const galleryCarousel = document.getElementById('galleryCarousel');
+            const gallerySlides = galleryTrack ? Array.from(galleryTrack.querySelectorAll('.gallery-slide')) : [];
+            let activeSlideIndex = 0;
+            let galleryAutoplayId = null;
+
+            function renderGalleryDots() {
+                if (!galleryDots) return;
+                galleryDots.innerHTML = gallerySlides.map((_, index) =>
+                    `<button class="gallery-dot${index === activeSlideIndex ? ' active' : ''}" type="button" data-slide="${index}" aria-label="Go to slide ${index + 1}"></button>`
+                ).join('');
+            }
+
+            function goToGallerySlide(index) {
+                if (!galleryTrack || gallerySlides.length === 0) return;
+                activeSlideIndex = (index + gallerySlides.length) % gallerySlides.length;
+                galleryTrack.style.transform = `translateX(-${activeSlideIndex * 100}%)`;
+                renderGalleryDots();
+            }
+
+            function startGalleryAutoplay() {
+                if (gallerySlides.length <= 1) return;
+                stopGalleryAutoplay();
+                galleryAutoplayId = window.setInterval(() => {
+                    goToGallerySlide(activeSlideIndex + 1);
+                }, 4500);
+            }
+
+            function stopGalleryAutoplay() {
+                if (galleryAutoplayId) {
+                    window.clearInterval(galleryAutoplayId);
+                    galleryAutoplayId = null;
+                }
+            }
+
+            if (gallerySlides.length > 0) {
+                renderGalleryDots();
+                goToGallerySlide(0);
+
+                galleryPrev?.addEventListener('click', () => goToGallerySlide(activeSlideIndex - 1));
+                galleryNext?.addEventListener('click', () => goToGallerySlide(activeSlideIndex + 1));
+                galleryDots?.addEventListener('click', (event) => {
+                    const target = event.target;
+                    if (!(target instanceof HTMLElement)) return;
+                    const slideIndex = Number(target.dataset.slide);
+                    if (Number.isFinite(slideIndex)) goToGallerySlide(slideIndex);
+                });
+
+                galleryCarousel?.addEventListener('mouseenter', stopGalleryAutoplay);
+                galleryCarousel?.addEventListener('mouseleave', startGalleryAutoplay);
+                galleryCarousel?.addEventListener('focusin', stopGalleryAutoplay);
+                galleryCarousel?.addEventListener('focusout', startGalleryAutoplay);
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) stopGalleryAutoplay();
+                    else startGalleryAutoplay();
+                });
+
+                startGalleryAutoplay();
+            }
+
+            // Load and Render Events
+            async function loadEvents() {
+                const grid = document.getElementById('eventsGrid');
+                if (!grid) return;
+
+                // Default fallback events if API fails or file is opened locally
+                const fallbackEvents = [
+                    { title: "Full Moon Meditation", date: "Feb 2", day: "Wednesday", time: "7:00 PM - 8:30 PM", description: "Join us for a special guided meditation under the full moon." },
+                    { title: "Community Charity Drive", date: "Feb 15", day: "Saturday", time: "10:00 AM - 2:00 PM", description: "Help us support local families in need. Donate goods or time." },
+                    { title: "Spiritual Workshop", date: "Feb 20", day: "Thursday", time: "6:00 PM - 8:00 PM", description: "Explore ancient wisdom traditions and modern applications." }
+                ];
+
+                let eventsToRender = fallbackEvents;
+
+                try {
+                    // Try API first (for local backend), fallback to static JSON (for GitHub Pages)
+                    let response = await fetch('/api/events');
+                    if (!response.ok) {
+                        response = await fetch('events.json');
+                    }
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.events && data.events.length > 0) {
+                            eventsToRender = data.events;
+                        }
+                    }
+                } catch (e) {
+                    console.log('Using fallback events data');
+                }
+
+                grid.innerHTML = eventsToRender.map(event => `
+                    <div class="event-card reveal">
+                        <div class="event-date">${event.date}</div>
+                        <h3>${event.title}</h3>
+                        <div class="event-meta">
+                            <span class="event-time">🕒 ${event.time}</span>
+                            <span>• ${event.day}</span>
+                        </div>
+                        <p class="event-desc">${event.description}</p>
+                        <div class="event-actions">
+                            <button class="event-btn">Details</button>
+                            <button class="event-btn" style="background: transparent; border: 1px solid var(--color-secondary); color: var(--color-text);">RSVP</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            loadEvents();
+
+            // Parallax effect for hero section
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                if (hero && scrolled < window.innerHeight) {
+                    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+                }
+            });
+
+            // Add ripple effect to buttons
+            document.querySelectorAll('.btn, .event-btn, .submit-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                        pointer-events: none;
+                    `;
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Add ripple keyframe
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Active nav link highlighting
+            const sections = document.querySelectorAll('section[id]');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionHeight = section.offsetHeight;
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionId = section.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
+
+                    if (navLink) {
+                        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                            navLink.classList.add('is-active');
+                        } else {
+                            navLink.classList.remove('is-active');
+                        }
+                    }
+                });
+            });
+
+            // Expose functions for inline handlers
+            window.scrollToSection = scrollToSection;
+            window.handleDonation = handleDonation;
+        });
+    </script>
+</body>
+</html>
