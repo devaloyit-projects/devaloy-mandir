@@ -1282,6 +1282,14 @@
             margin-bottom: 0.8rem;
         }
 
+        .zelle-id-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
         .zelle-id {
             background: var(--color-light);
             padding: 0.6rem 1.2rem;
@@ -1290,6 +1298,34 @@
             color: var(--color-primary);
             display: inline-block;
             border: 1px dashed var(--color-secondary);
+        }
+
+        .copy-btn {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.1);
+            background: #d4b570;
+        }
+
+        .copy-btn.copied {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .copy-btn span {
+            font-size: 1.2rem;
         }
 
         .footer-phone-list {

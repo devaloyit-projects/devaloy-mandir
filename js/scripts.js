@@ -34,27 +34,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Scroll progress update
+    let isScrolling = false;
     window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercent = (scrollTop / scrollHeight) * 100;
-        scrollProgress.style.width = scrollPercent + '%';
+        if (!isScrolling) {
+            window.requestAnimationFrame(function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                scrollProgress.style.width = scrollPercent + '%';
 
-        // Back to top button visibility
-        if (scrollTop > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
+                // Back to top button visibility
+                if (scrollTop > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
 
-        // Navbar scroll effect
-        const nav = document.querySelector('nav');
-        if (scrollTop > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+                // Navbar scroll effect
+                const nav = document.querySelector('nav');
+                if (scrollTop > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
-    });
+    }, { passive: true });
 
     // Back to top click handler
     backToTop.addEventListener('click', function() {
@@ -84,8 +91,22 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
     }
 
-    // Delay flyer popup slightly
-    setTimeout(openFlyerPopup, 1500);
+    // Delay flyer popup slightly with "Smart" logic (Once every 24 hours)
+    function shouldShowFlyer() {
+        const lastShown = localStorage.getItem('flyerLastShown');
+        if (!lastShown) return true;
+        
+        const twentyFourHours = 24 * 60 * 60 * 1000;
+        const now = new Date().getTime();
+        return (now - parseInt(lastShown)) > twentyFourHours;
+    }
+
+    if (shouldShowFlyer()) {
+        setTimeout(() => {
+            openFlyerPopup();
+            localStorage.setItem('flyerLastShown', new Date().getTime().toString());
+        }, 1500);
+    }
     
     flyerCloseBtn?.addEventListener('click', closeFlyerPopup);
     flyerPopup?.addEventListener('click', (event) => {
@@ -93,6 +114,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') closeFlyerPopup();
+    });
+
+    // Zelle Copy to Clipboard
+    const copyZelleBtn = document.getElementById('copyZelleBtn');
+    const zelleId = document.getElementById('zelleId');
+
+    copyZelleBtn?.addEventListener('click', () => {
+        const email = zelleId.textContent;
+        navigator.clipboard.writeText(email).then(() => {
+            const icon = copyZelleBtn.querySelector('.material-symbols-outlined');
+            const originalIcon = icon.textContent;
+            
+            icon.textContent = 'check';
+            copyZelleBtn.classList.add('copied');
+            
+            setTimeout(() => {
+                icon.textContent = originalIcon;
+                copyZelleBtn.classList.remove('copied');
+            }, 2000);
+        });
     });
 
     function toggleMenu() {
@@ -413,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { title: "Spiritual Workshop", date: "Feb 20", day: "Thursday", time: "6:00 PM - 8:00 PM", description: "Explore ancient wisdom traditions and modern applications." }
         ];
 
-        let eventsToRender = fallbackEvents;
+        let eventsToRender = [];
 
         try {
             // Try API first (for local backend), fallback to static JSON (for GitHub Pages)
@@ -424,40 +465,90 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
                 const data = await response.json();
-                if (data.events && data.events.length > 0) {
+                if (data.events && Array.isArray(data.events)) {
                     eventsToRender = data.events;
                 }
             }
         } catch (e) {
             console.log('Using fallback events data');
+            eventsToRender = fallbackEvents;
         }
 
-        grid.innerHTML = eventsToRender.map(event => `
+        // If we have no events after trying API, use fallbacks
+        if (eventsToRender.length === 0) {
+            eventsToRender = fallbackEvents;
+        }
+
+        // Sort events by date (assuming they follow "Month Day" format)
+        const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
+        eventsToRender.sort((a, b) => {
+            const [aMonth, aDay] = a.date.split(' ');
+            const [bMonth, bDay] = b.date.split(' ');
+            const aDate = new Date(2026, months[aMonth] || 0, parseInt(aDay) || 1);
+            const bDate = new Date(2026, months[bMonth] || 0, parseInt(bDay) || 1);
+            return aDate - bDate;
+        });
+
+        grid.innerHTML = eventsToRender.map(event => {
+            const imageHtml = event.image ? `<img src="${event.image}" alt="${escapeHtml(event.title)}" class="event-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">` : '';
+            return `
             <div class="event-card reveal">
-                <div class="event-date">${event.date}</div>
-                <h3>${event.title}</h3>
+                ${imageHtml}
+                <div class="event-date">${escapeHtml(event.date)}</div>
+                <h3>${escapeHtml(event.title)}</h3>
                 <div class="event-meta">
-                    <span class="event-time">🕒 ${event.time}</span>
-                    <span>• ${event.day}</span>
+                    <span class="event-time">🕒 ${escapeHtml(event.time)}</span>
+                    <span>• ${escapeHtml(event.day)}</span>
                 </div>
-                <p class="event-desc">${event.description}</p>
+                <p class="event-desc">${escapeHtml(event.description)}</p>
                 <div class="event-actions">
                     <button class="event-btn">Details</button>
-                    <button class="event-btn" style="background: transparent; border: 1px solid var(--color-secondary); color: var(--color-text);">RSVP</button>
                 </div>
             </div>
-        `).join('');
+        `;
+        }).join('');
+        
+        // Re-initialize reveal animations for new elements
+        if (typeof revealObserver !== 'undefined') {
+            document.querySelectorAll('.event-card.reveal').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
     }
+    
+    // Listen for updates from the admin panel "tunnel"
+    const eventChannel = new BroadcastChannel('devaloy-events-channel');
+    eventChannel.onmessage = (event) => {
+        if (event.data === 'event-updated') {
+            console.log('Received push update from admin panel, refreshing events...');
+            loadEvents();
+        }
+    };
+
     loadEvents();
 
+    // Utility function to escape HTML
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     // Parallax effect for hero section
-    const hero = document.querySelector('.hero');
+    let isParallaxScrolling = false;
     window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        if (hero && scrolled < window.innerHeight) {
-            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        if (!isParallaxScrolling) {
+            window.requestAnimationFrame(function() {
+                const scrolled = window.pageYOffset;
+                if (hero && scrolled < window.innerHeight) {
+                    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+                }
+                isParallaxScrolling = false;
+            });
+            isParallaxScrolling = true;
         }
-    });
+    }, { passive: true });
 
     // Add ripple effect to buttons
     function createRipple(e) {
@@ -506,23 +597,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Active nav link highlighting
     const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset;
-
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
-
-            if (navLink) {
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.getAttribute('id');
+                const navLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
+                if (navLink) {
+                    document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('is-active'));
                     navLink.classList.add('is-active');
-                } else {
-                    navLink.classList.remove('is-active');
                 }
             }
         });
+    }, { threshold: 0.3, rootMargin: "-100px 0px" });
+
+    sections.forEach(section => {
+        navObserver.observe(section);
     });
 
     // Expose functions for inline handlers if any remain

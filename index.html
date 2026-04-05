@@ -173,7 +173,7 @@
                 <div class="gallery-track" id="galleryTrack">
                     <div class="gallery-slide">
                         <div class="gallery-item">
-                            <div class="gallery-image"><img src="Media/IMG_4342.jpeg" alt="Main Prayer Hall interior"></div>
+                            <div class="gallery-image"><img src="Media/IMG_4342.jpeg" alt="Main Prayer Hall interior" loading="lazy"></div>
                             <h3>Main Prayer Hall</h3>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
 
                     <div class="gallery-slide">
                         <div class="gallery-item">
-                            <div class="gallery-image"><img src="Media/IMG_6401.jpeg" alt="Charitable service and community aid"></div>
+                            <div class="gallery-image"><img src="Media/IMG_6401.jpeg" alt="Charitable service and community aid" loading="lazy"></div>
                             <h3>Charitable Service</h3>
                         </div>
                     </div>
@@ -314,7 +314,12 @@
             <div class="zelle-info">
                 <h3>Donate via Zelle</h3>
                 <p>100% of your gift goes to our mission. No processing fees.</p>
-                <div class="zelle-id">contact@devaloymandir.org</div>
+                <div class="zelle-id-container">
+                    <div class="zelle-id" id="zelleId">(646) 643-1465</div>
+                    <button type="button" class="copy-btn" id="copyZelleBtn" aria-label="Copy Zelle ID">
+                        <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                </div>
                 <div style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">Recipient: <strong>Devaloy Mandir</strong></div>
             </div>
         </div>
@@ -363,6 +368,6 @@
     </footer>
     </main>
 
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js" defer></script>
 </body>
 </html>
