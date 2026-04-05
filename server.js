@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
+const compression = require('compression');
 const fs = require('fs/promises');
 const path = require('path');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder');
@@ -12,7 +13,7 @@ const app = express();
 // --- Configuration ---
 const PORT = process.env.PORT || 3000;
 const EVENTS_FILE = path.join(__dirname, 'events.json');
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'change-me';
+const ADMIN_TOKEN = (process.env.ADMIN_TOKEN || 'change-me').trim();
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
 
 // --- Rate Limiting ---
@@ -105,7 +106,9 @@ const upload = multer({
 function requireAdmin(req, res, next) {
   const token = req.header('x-admin-token');
   if (token !== ADMIN_TOKEN) {
-    console.log(`Auth failed: Received "${token}", Expected "${ADMIN_TOKEN}"`);
+    console.error(`[AUTH FAILURE] Endpoint: ${req.method} ${req.path}`);
+    console.error(`Received: "${token}" (Length: ${token ? token.length : 0})`);
+    console.error(`Expected: "${ADMIN_TOKEN}" (Length: ${ADMIN_TOKEN.length})`);
     return res.status(401).json({ error: 'Unauthorized' });
   }
   next();
@@ -132,7 +135,7 @@ async function writeEventsFile(events) {
 }
 
 function validateEventInput(input) {
-  const requiredFields = ['title', 'date', 'day', 'time', 'description'];
+  const requiredFields = ['title', 'date', 'description'];
   for (const field of requiredFields) {
     if (!input[field] || typeof input[field] !== 'string' || !input[field].trim()) {
       return `Invalid or missing field: ${field}`;
@@ -166,8 +169,8 @@ app.post('/api/events', adminLimiter, requireAdmin, async (req, res) => {
       id: nextId,
       title: req.body.title.trim(),
       date: req.body.date.trim(),
-      day: req.body.day.trim(),
-      time: req.body.time.trim(),
+      day: (req.body.day || '').trim() || 'Scheduled',
+      time: (req.body.time || '').trim() || 'TBD',
       description: req.body.description.trim(),
       image: req.body.image || null,
       learnMore: true
@@ -196,8 +199,8 @@ app.put('/api/events/:id', adminLimiter, requireAdmin, async (req, res) => {
       ...data.events[index],
       title: req.body.title.trim(),
       date: req.body.date.trim(),
-      day: req.body.day.trim(),
-      time: req.body.time.trim(),
+      day: (req.body.day || '').trim() || 'Scheduled',
+      time: (req.body.time || '').trim() || 'TBD',
       description: req.body.description.trim(),
       image: req.body.image !== undefined ? req.body.image : data.events[index].image,
       learnMore: true

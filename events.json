@@ -47,23 +47,13 @@
     },
     {
       "id": 6,
-      "title": "Test Event with Image",
-      "date": "Mar 15",
-      "day": "Saturday",
-      "time": "6:00 PM - 9:00 PM",
-      "description": "This is a test event to verify the admin panel and image upload functionality.",
-      "image": null,
-      "learnMore": true
-    },
-    {
-      "id": 7,
-      "title": "Test Test",
-      "date": "Mar 16",
+      "title": "This is a TEST",
+      "date": "Feb 2",
       "day": "Monday",
-      "time": "7:00PM - 10:30PM",
-      "description": "TEST ETS",
-      "image": null,
+      "time": "9:00 PM - 5:00 PM",
+      "description": "A special morning celebrating love, compassion, and connection with music, food, and spiritual practices for all.",
       "learnMore": true
     }
+
   ]
 }

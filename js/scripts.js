@@ -221,46 +221,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        if (!stripe) {
-            alert('Stripe is not loaded. Please check your internet connection.');
-            return;
-        }
-
         try {
             submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Processing...';
+            submitBtn.innerHTML = 'Redirecting...';
 
-            const response = await fetch('/api/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    amount,
-                    name,
-                    email,
-                    type
-                }),
-            });
+            // --- ZERO-COST HOSTING (GITHUB PAGES) ---
+            // Replace the URL below with your actual Stripe Payment Link from your Dashboard
+            // Recommendation: Create a "Pay what you want" link for general donations
+            const stripePaymentLink = 'https://donate.stripe.com/your-payment-link-placeholder';
+            
+            // Redirect to Stripe directly
+            window.location.href = stripePaymentLink;
 
-            const session = await response.json();
-
-            if (session.error) {
-                throw new Error(session.error);
-            }
-
-            // Redirect to Stripe Checkout
-            const result = await stripe.redirectToCheckout({
-                sessionId: session.id,
-            });
-
-            if (result.error) {
-                alert(result.error.message);
-            }
+            /* 
+            // DEPRECATED: Server-side logic (requires Node.js)
+            const response = await fetch('/api/create-checkout-session', { ... });
+            ...
+            */
         } catch (error) {
             console.error('Error:', error);
             alert('Something went wrong. Please try again later.');
-        } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnText;
         }
