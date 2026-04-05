@@ -60,7 +60,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 4. REVEAL ANIMATIONS (RESTORED ALL TRIGGERS) ---
+    // --- 4. HERO BUTTONS RESPONSIVENESS ---
+    const heroDonateBtn = document.getElementById('heroDonateBtn');
+    const heroFindBtn = document.getElementById('heroFindBtn');
+    const mapUrl = 'https://www.google.com/maps/dir/?api=1&destination=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426';
+
+    heroDonateBtn?.addEventListener('click', () => {
+        document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    heroFindBtn?.addEventListener('click', () => {
+        window.open(mapUrl, '_blank');
+    });
+
+    // --- 5. FLYER POPUP (Once every 24h) ---
+    const flyerPopup = document.getElementById('flyerPopup');
+    if (flyerPopup) {
+        const lastShown = localStorage.getItem('flyerLastShown');
+        const now = new Date().getTime();
+        // Show if never shown OR if more than 24 hours have passed
+        if (!lastShown || (now - parseInt(lastShown)) > 24 * 60 * 60 * 1000) {
+            setTimeout(() => {
+                flyerPopup.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+                localStorage.setItem('flyerLastShown', now.toString());
+            }, 1500);
+        }
+
+        document.getElementById('flyerCloseBtn')?.addEventListener('click', () => {
+            flyerPopup.classList.remove('is-open');
+            document.body.style.overflow = '';
+        });
+
+        // Close on background click
+        flyerPopup.addEventListener('click', (e) => {
+            if (e.target === flyerPopup) {
+                flyerPopup.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // --- 6. REVEAL ANIMATIONS ---
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -75,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
             '.reveal', '.reveal-left', '.reveal-right', '.reveal-scale',
             'h2', '.section-subtitle', '.about-text', '.about-image', 
             '.feature-card', '.aim-card', '.location-info', '.map-embed', 
-            '.donation-form', '.zelle-box', '.footer-section', '.footer-bottom'
+            '.donation-form', '.zelle-box', '.footer-section', '.footer-bottom',
+            '.location-card-modern', '.map-wrapper-modern'
         ];
         document.querySelectorAll(targets.join(',')).forEach(el => {
             revealObserver.observe(el);
@@ -83,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     initReveal();
 
-    // --- 5. MODAL SYSTEM ---
+    // --- 7. MODAL SYSTEM ---
     const detailModal = document.createElement('div');
     detailModal.className = 'detail-modal';
     detailModal.innerHTML = `
@@ -114,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     });
 
-    // --- 6. AIM CARDS (TILT & MODAL) ---
+    // --- 8. AIM CARDS (TILT & MODAL) ---
     document.querySelectorAll('.aim-card').forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
@@ -131,19 +173,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 7. GALLERY CAROUSEL ---
+    // --- 9. GALLERY CAROUSEL ---
     const track = document.getElementById('galleryTrack');
     const slides = Array.from(track?.querySelectorAll('.gallery-slide') || []);
     const dotsContainer = document.getElementById('galleryDots');
     let currentSlide = 0;
 
-    if (track && slides.length > 0) {
-        // Create dots
+    if (track && slides.length > 0 && dotsContainer) {
+        dotsContainer.innerHTML = ''; // Clear existing
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.className = `gallery-dot ${i === 0 ? 'active' : ''}`;
             dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer?.appendChild(dot);
+            dotsContainer.appendChild(dot);
         });
 
         function goToSlide(i) {
@@ -162,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 8. GOOGLE SHEETS EVENTS ---
+    // --- 10. GOOGLE SHEETS EVENTS ---
     const grid = document.getElementById('eventsGrid');
     const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTKh0_gIOWVQT33inL_MrUSZX8dzmGBylCN-wtFY8eUHnB9haiz4ubbIxsLT1oRBcTICxtgeicimk-/pub?output=csv';
     window._allEventsData = [];
@@ -238,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loadEvents();
 
-    // --- 9. DONATIONS ---
+    // --- 11. DONATIONS ---
     const donationForm = document.getElementById('donationForm');
     donationForm?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -271,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ripple effect
     document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn, .event-btn, .submit-btn, .amount-btn');
+        const btn = e.target.closest('.btn, .event-btn, .submit-btn, .amount-btn, .btn-directions');
         if (btn) {
             const ripple = document.createElement('span');
             ripple.className = 'ripple';
@@ -292,5 +334,4 @@ document.addEventListener('DOMContentLoaded', function() {
             if (customInput) customInput.value = btn.getAttribute('data-amount');
         });
     });
-
 });
