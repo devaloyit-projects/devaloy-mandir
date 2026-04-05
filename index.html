@@ -221,46 +221,90 @@
     <!-- Location Section -->
     <section id="location">
         <h2>Visit Us</h2>
+        <p class="section-subtitle">We welcome you to join our community and find peace</p>
+        
         <div class="location-container">
-            <div class="location-info">
-                <h3>Temple Location</h3>
-                <div class="info-item">
-                    <div class="info-label">
-                        Address
+            <div class="location-main-info">
+                <div class="location-card-modern reveal-left">
+                    <div class="location-header">
+                        <div class="location-icon-box">
+                            <span class="material-symbols-outlined">temple_hindu</span>
+                        </div>
+                        <div class="location-title">
+                            <h3>Devaloy Mandir</h3>
+                            <p>A Sacred Sanctuary for All</p>
+                        </div>
                     </div>
-                    <div class="info-text">8529 Commonwealth Blvd<br>Bellerose, NY 11426</div>
+
+                    <div class="location-details-grid">
+                        <div class="detail-item-modern">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <div>
+                                <h4>Address</h4>
+                                <p>8529 Commonwealth Blvd<br>Bellerose, NY 11426</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item-modern">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Mon - Fri: 6:00 AM - 9:00 PM<br>Sat - Sun: 8:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item-modern">
+                            <span class="material-symbols-outlined">call</span>
+                            <div>
+                                <h4>Contact</h4>
+                                <p><a href="tel:6466431465">(646) 643-1465</a></p>
+                                <p><a href="tel:9172178885" style="font-size: 0.9rem; opacity: 0.8;">(917) 217-8885</a></p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item-modern">
+                            <span class="material-symbols-outlined">mail</span>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:contact@devaloymandir.org">contact@devaloymandir.org</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location-actions">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426" target="_blank" class="btn-directions">
+                            <span class="material-symbols-outlined">directions</span>
+                            Get Directions
+                        </a>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <div class="info-label">
-                        Phone
+
+                <div class="transport-info reveal-left" style="transition-delay: 0.2s;">
+                    <div class="transport-item">
+                        <span class="material-symbols-outlined">directions_car</span>
+                        <p><strong>Parking:</strong> Free street parking is available along Commonwealth Blvd and surrounding side streets.</p>
                     </div>
-                    <div class="info-text">
-                        <a href="tel:6466431465" style="color: inherit; text-decoration: none;">(646) 643-1465</a><br>
-                        <a href="tel:9172178885" style="color: inherit; text-decoration: none;">(917) 217-8885</a><br>
-                        <a href="tel:6464080741" style="color: inherit; text-decoration: none;">(646) 408-0741</a>
+                    <div class="transport-item">
+                        <span class="material-symbols-outlined">directions_bus</span>
+                        <p><strong>Public Transport:</strong> Q1 and Q27 bus stops are within a 5-minute walking distance.</p>
                     </div>
-                </div>
-<div class="info-item">
-                    <div class="info-label">
-                        Email
-                    </div>
-                    <div class="info-text">contact@devaloymandir.org</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">
-                        Hours
-                    </div>
-                    <div class="info-text">Monday - Friday: 6 AM - 9 PM<br>Saturday - Sunday: 8 AM - 8 PM</div>
                 </div>
             </div>
-            <div class="map-embed" aria-label="Google map for 85-29 Commonwealth Blvd, Bellerose, NY 11426">
-                <iframe
-                    title="Devaloy Mandir map location"
-                    loading="lazy"
-                    allowfullscreen
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps?q=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426&output=embed">
-                </iframe>
+
+            <div class="map-wrapper-modern reveal-right">
+                <div class="map-frame">
+                    <iframe
+                        title="Devaloy Mandir map location"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426&output=embed">
+                    </iframe>
+                </div>
+                <div class="map-overlay-info">
+                    <span class="material-symbols-outlined">info</span>
+                    <span>Located in the heart of Bellerose, Queens.</span>
+                </div>
             </div>
         </div>
     </section>
@@ -268,58 +312,59 @@
     <!-- Donation Section -->
     <section id="donate" class="donation-section">
         <h2>Support Our Mission</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.1rem;">Your generous donation helps us maintain our temple, support community programs, and serve those in need.</p>
+        <p style="margin-bottom: 1rem; font-size: 1.1rem; text-align: center;">Your generous contribution helps us maintain our temple and serve our community.</p>
         
-        <form class="donation-form" id="donationForm">
-            <div class="form-group">
-                <label>Select Amount</label>
-                <div class="amount-options">
-                    <button type="button" class="amount-btn" data-amount="25">$25</button>
-                    <button type="button" class="amount-btn" data-amount="50">$50</button>
-                    <button type="button" class="amount-btn" data-amount="100">$100</button>
-                    <button type="button" class="amount-btn" data-amount="250">$250</button>
+        <div class="donation-container-layout">
+            <!-- Left Side: Stripe Card Payments -->
+            <form class="donation-form" id="donationForm">
+                <div class="form-header">
+                    <span class="material-symbols-outlined">credit_card</span>
+                    <h3>Donate with Card</h3>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="customAmount">Custom Amount ($)</label>
-                <input type="number" id="customAmount" name="customAmount" placeholder="Enter custom amount" min="1" step="0.01">
-            </div>
-
-            <div class="form-group">
-                <label for="donorName">Full Name</label>
-                <input type="text" id="donorName" name="donorName" placeholder="Your full name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="donorEmail">Email Address</label>
-                <input type="email" id="donorEmail" name="donorEmail" placeholder="your@email.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="donationType">Donation Type</label>
-                <select id="donationType" name="donationType" required>
-                    <option value="one-time">One-Time Donation</option>
-                    <option value="monthly">Monthly Recurring</option>
-                    <option value="yearly">Yearly Recurring</option>
-                </select>
-            </div>
-
-            <button type="submit" class="submit-btn">Complete Donation</button>
-        </form>
-
-        <div class="zelle-box reveal">
-            <div class="zelle-icon"><span class="material-symbols-outlined">payments</span></div>
-            <div class="zelle-info">
-                <h3>Donate via Zelle</h3>
-                <p>100% of your gift goes to our mission. No processing fees.</p>
-                <div class="zelle-id-container">
-                    <div class="zelle-id" id="zelleId">(646) 643-1465</div>
-                    <button type="button" class="copy-btn" id="copyZelleBtn" aria-label="Copy Zelle ID">
-                        <span class="material-symbols-outlined">content_copy</span>
-                    </button>
+                
+                <div class="form-group">
+                    <label>Quick Selection</label>
+                    <div class="amount-options">
+                        <button type="button" class="amount-btn" data-amount="25">$25</button>
+                        <button type="button" class="amount-btn" data-amount="50">$50</button>
+                        <button type="button" class="amount-btn" data-amount="100">$100</button>
+                        <button type="button" class="amount-btn" data-amount="250">$250</button>
+                    </div>
                 </div>
-                <div style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">Recipient: <strong>Devaloy Mandir</strong></div>
+
+                <div class="form-group">
+                    <label for="customAmount">Custom Amount ($)</label>
+                    <input type="number" id="customAmount" name="customAmount" placeholder="Enter any amount" min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="donationType">Frequency</label>
+                    <select id="donationType" name="donationType" required>
+                        <option value="one-time">One-Time Gift</option>
+                        <option value="monthly">Monthly Support (Recommended)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Continue to Secure Payment</button>
+                <p class="secure-note">🔒 Secured by <strong>Stripe</strong></p>
+            </form>
+
+            <!-- Right Side: Zelle (The "Best" way) -->
+            <div class="zelle-box reveal">
+                <div class="zelle-badge">Most Efficient</div>
+                <div class="zelle-icon"><span class="material-symbols-outlined">payments</span></div>
+                <div class="zelle-info">
+                    <h3>Donate via Zelle</h3>
+                    <p>No processing fees. <strong>100%</strong> of your gift goes directly to the temple's programs.</p>
+                    <div class="zelle-id-container">
+                        <div class="zelle-id" id="zelleId">(646) 643-1465</div>
+                        <button type="button" class="copy-btn" id="copyZelleBtn" aria-label="Copy Zelle ID">
+                            <span class="material-symbols-outlined">content_copy</span>
+                        </button>
+                    </div>
+                    <div class="zelle-recipient">Recipient: <strong>Devaloy Mandir</strong></div>
+                    <p class="zelle-hint">Use your banking app to send your gift.</p>
+                </div>
             </div>
         </div>
     </section>
