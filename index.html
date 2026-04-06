@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" data-i18n="skip-link">Skip to main content</a>
 
     <div class="flyer-popup" id="flyerPopup" role="dialog" aria-modal="true" aria-label="Fundraiser announcement">
         <div class="flyer-popup-content">
@@ -41,7 +41,7 @@
                 class="flyer-image"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
             >
-            <div class="flyer-fallback" style="display:none;">
+            <div class="flyer-fallback" style="display:none;" data-i18n="flyer-fallback">
                 Add your flyer image at <code>media/img_5506.png</code> to show this popup.
             </div>
         </div>
@@ -80,29 +80,29 @@
             <source src="media/img_1811.mov" type="video/mp4">
         </video>
         <div class="hero-content">
-            <span class="hero-badge">Community Spiritual Center</span>
-            <h1>Welcome to Devaloy Mandir</h1>
-            <p>A sacred space for spiritual growth, community connection, and inner peace</p>
+            <span class="hero-badge" data-i18n="hero-badge">Community Spiritual Center</span>
+            <h1 data-i18n="hero-title">Welcome to Devaloy Mandir</h1>
+            <p data-i18n="hero-subtitle">A sacred space for spiritual growth, community connection, and inner peace</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary" id="heroDonateBtn" type="button">Donate Now</button>
-                <button class="btn btn-secondary" id="heroFindBtn" type="button">Find Us</button>
+                <button class="btn btn-primary" id="heroDonateBtn" type="button" data-i18n="hero-donate">Donate Now</button>
+                <button class="btn btn-secondary" id="heroFindBtn" type="button" data-i18n="hero-find">Find Us</button>
             </div>
             <div class="hero-stats" aria-label="Temple Highlights">
-                <div class="stat-card"><strong>7</strong><span>Days Open</span></div>
-                <div class="stat-card"><strong>20+</strong><span>Monthly Activities</span></div>
-                <div class="stat-card"><strong>All Ages</strong><span>Welcomed</span></div>
+                <div class="stat-card"><strong data-i18n="stat-days-val">7</strong><span data-i18n="stat-days-label">Days Open</span></div>
+                <div class="stat-card"><strong data-i18n="stat-activities-val">20+</strong><span data-i18n="stat-activities-label">Monthly Activities</span></div>
+                <div class="stat-card"><strong data-i18n="stat-ages-val">All Ages</strong><span data-i18n="stat-ages-label">Welcomed</span></div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2>About Our Temple</h2>
+        <h2 data-i18n="about-title">About Our Temple</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3>Our Mission</h3>
-<p>Devaloy Mandir is dedicated to providing a welcoming sanctuary for individuals seeking spiritual development and community support. We believe in fostering compassion, wisdom, and inner peace.</p>
-                <p>Our community gatherings, meditation sessions, and educational programs are designed to help members of all backgrounds discover their spiritual path and connect with like-minded individuals.</p>
+                <h3 data-i18n="mission-title">Our Mission</h3>
+                <p data-i18n="mission-p1">Devaloy Mandir is dedicated to providing a welcoming sanctuary for individuals seeking spiritual development and community support. We believe in fostering compassion, wisdom, and inner peace.</p>
+                <p data-i18n="mission-p2">Our community gatherings, meditation sessions, and educational programs are designed to help members of all backgrounds discover their spiritual path and connect with like-minded individuals.</p>
             </div>
             <div class="about-image">
                 <img src="media/img_8976.jpg" alt="Devaloy Mandir mission">
@@ -112,67 +112,67 @@
 
     <!-- Activities Section -->
     <section id="activities">
-        <h2>Our Activities</h2>
+        <h2 data-i18n="activities-title">Our Activities</h2>
         <div class="features">
             <div class="feature-card" style="background-image: url('media/img_4342.jpg');">
-                <h3>Meditation & Prayer</h3>
-                <p>Daily guided meditation sessions and prayer circles to foster inner peace and spiritual connection.</p>
+                <h3 data-i18n="activity1-title">Meditation & Prayer</h3>
+                <p data-i18n="activity1-desc">Daily guided meditation sessions and prayer circles to foster inner peace and spiritual connection.</p>
             </div>
             <div class="feature-card" style="background-image: url('media/img_8976.jpg');">
-                <h3>Spiritual Education</h3>
-                <p>Classes and workshops on ancient wisdom traditions, philosophy, and personal growth.</p>
+                <h3 data-i18n="activity2-title">Spiritual Education</h3>
+                <p data-i18n="activity2-desc">Classes and workshops on ancient wisdom traditions, philosophy, and personal growth.</p>
             </div>
             <div class="feature-card" style="background-image: url('media/img_5506.png');">
-                <h3>Community Programs</h3>
-                <p>Outreach initiatives, charity events, and community service opportunities for all members.</p>
+                <h3 data-i18n="activity3-title">Community Programs</h3>
+                <p data-i18n="activity3-desc">Outreach initiatives, charity events, and community service opportunities for all members.</p>
             </div>
             <div class="feature-card" style="background-image: url('media/img_4342.jpg');">
-                <h3>Celebrations & Events</h3>
-                <p>Special ceremonies, festivals, and gatherings throughout the year celebrating spiritual milestones.</p>
+                <h3 data-i18n="activity4-title">Celebrations & Events</h3>
+                <p data-i18n="activity4-desc">Special ceremonies, festivals, and gatherings throughout the year celebrating spiritual milestones.</p>
             </div>
         </div>
     </section>
 
     <!-- Aims & Objectives Section -->
     <section id="aims">
-        <h2>Aims & Objectives</h2>
+        <h2 data-i18n="aims-title">Aims & Objectives</h2>
         <div class="aims-content">
             <div class="aims-grid">
                 <div class="aim-card">
                     <div class="aim-icon"><span class="material-symbols-outlined">self_improvement</span></div>
-                    <h3>Spiritual Growth</h3>
-                    <p>Foster individual spiritual development through meditation, prayer, and self-discovery practices accessible to all members.</p>
-                    <span class="learn-more-hint">Click to learn more →</span>
+                    <h3 data-i18n="aim1-title">Spiritual Growth</h3>
+                    <p data-i18n="aim1-desc">Foster individual spiritual development through meditation, prayer, and self-discovery practices accessible to all members.</p>
+                    <span class="learn-more-hint" data-i18n="learn-more">Click to learn more →</span>
                 </div>
                 <div class="aim-card">
                     <div class="aim-icon"><span class="material-symbols-outlined">temple_hindu</span></div>
-                    <h3>Preserve Traditions</h3>
-                    <p>Maintain and celebrate sacred cultural and spiritual traditions while adapting to modern community needs.</p>
-                    <span class="learn-more-hint">Click to learn more →</span>
+                    <h3 data-i18n="aim2-title">Preserve Traditions</h3>
+                    <p data-i18n="aim2-desc">Maintain and celebrate sacred cultural and spiritual traditions while adapting to modern community needs.</p>
+                    <span class="learn-more-hint" data-i18n="learn-more">Click to learn more →</span>
                 </div>
                 <div class="aim-card">
                     <div class="aim-icon"><span class="material-symbols-outlined">volunteer_activism</span></div>
-                    <h3>Community Service</h3>
-                    <p>Serve the wider community through charitable programs, outreach initiatives, and support for those in need.</p>
-                    <span class="learn-more-hint">Click to learn more →</span>
+                    <h3 data-i18n="aim3-title">Community Service</h3>
+                    <p data-i18n="aim3-desc">Serve the wider community through charitable programs, outreach initiatives, and support for those in need.</p>
+                    <span class="learn-more-hint" data-i18n="learn-more">Click to learn more →</span>
                 </div>
                 <div class="aim-card">
                     <div class="aim-icon"><span class="material-symbols-outlined">diversity_3</span></div>
-                    <h3>Unity & Harmony</h3>
-                    <p>Create an inclusive, welcoming space where people of all backgrounds can come together in peace and mutual respect.</p>
-                    <span class="learn-more-hint">Click to learn more →</span>
+                    <h3 data-i18n="aim4-title">Unity & Harmony</h3>
+                    <p data-i18n="aim4-desc">Create an inclusive, welcoming space where people of all backgrounds can come together in peace and mutual respect.</p>
+                    <span class="learn-more-hint" data-i18n="learn-more">Click to learn more →</span>
                 </div>
                 <div class="aim-card">
                     <div class="aim-icon"><span class="material-symbols-outlined">menu_book</span></div>
-                    <h3>Education & Wisdom</h3>
-                    <p>Provide educational programs and workshops that deepen understanding of spiritual philosophy and personal growth.</p>
-                    <span class="learn-more-hint">Click to learn more →</span>
+                    <h3 data-i18n="aim5-title">Education & Wisdom</h3>
+                    <p data-i18n="aim5-desc">Provide educational programs and workshops that deepen understanding of spiritual philosophy and personal growth.</p>
+                    <span class="learn-more-hint" data-i18n="learn-more">Click to learn more →</span>
                 </div>
                 <div class="aim-card">
                     <div class="aim-icon"><span class="material-symbols-outlined">auto_awesome</span></div>
-                    <h3>Transform Lives</h3>
-                    <p>Empower individuals to discover their purpose, achieve inner peace, and contribute positively to society.</p>
-                    <span class="learn-more-hint">Click to learn more →</span>
+                    <h3 data-i18n="aim6-title">Transform Lives</h3>
+                    <p data-i18n="aim6-desc">Empower individuals to discover their purpose, achieve inner peace, and contribute positively to society.</p>
+                    <span class="learn-more-hint" data-i18n="learn-more">Click to learn more →</span>
                 </div>
             </div>
         </div>
@@ -180,8 +180,8 @@
 
     <!-- Events Section -->
     <section id="events">
-        <h2>Upcoming Events</h2>
-        <p class="section-subtitle">Join us for spiritual gatherings and community celebrations</p>
+        <h2 data-i18n="events-title">Upcoming Events</h2>
+        <p class="section-subtitle" data-i18n="events-subtitle">Join us for spiritual gatherings and community celebrations</p>
         <div class="events-grid" id="eventsGrid">
             <!-- Events will be loaded dynamically via JavaScript -->
         </div>
@@ -189,8 +189,8 @@
 
     <!-- Gallery Section -->
     <section id="gallery">
-        <h2>Gallery</h2>
-        <p style="text-align: center; color: var(--color-text); margin-bottom: 2rem;">Explore moments from our temple, events, and community gatherings</p>
+        <h2 data-i18n="gallery-title">Gallery</h2>
+        <p style="text-align: center; color: var(--color-text); margin-bottom: 2rem;" data-i18n="gallery-subtitle">Explore moments from our temple, events, and community gatherings</p>
         <div class="gallery-carousel" id="galleryCarousel">
             <button class="gallery-nav prev" id="galleryPrev" type="button" aria-label="Previous gallery slide">‹</button>
             <div class="gallery-viewport">
@@ -198,42 +198,42 @@
                     <div class="gallery-slide">
                         <div class="gallery-item">
                             <div class="gallery-image"><img src="media/img_4342.jpg" alt="Main Prayer Hall interior" loading="lazy"></div>
-                            <h3>Main Prayer Hall</h3>
+                            <h3 data-i18n="gallery1-title">Main Prayer Hall</h3>
                         </div>
                     </div>
 
                     <div class="gallery-slide">
                         <div class="gallery-item">
                             <div class="gallery-image"><img src="media/img_4814.jpg" alt="Cultural festivities and performances"></div>
-                            <h3>Cultural Festivities</h3>
+                            <h3 data-i18n="gallery2-title">Cultural Festivities</h3>
                         </div>
                     </div>
 
                     <div class="gallery-slide">
                         <div class="gallery-item">
                             <div class="gallery-image"><img src="media/img_1882.jpg" alt="Community gathering and prayers"></div>
-                            <h3>Community Gathering</h3>
+                            <h3 data-i18n="gallery3-title">Community Gathering</h3>
                         </div>
                     </div>
 
                     <div class="gallery-slide">
                         <div class="gallery-item">
                             <div class="gallery-image"><img src="media/img_8976.jpg" alt="Durga Puja celebration"></div>
-                            <h3>Durga Puja Celebration</h3>
+                            <h3 data-i18n="gallery4-title">Durga Puja Celebration</h3>
                         </div>
                     </div>
 
                     <div class="gallery-slide">
                         <div class="gallery-item">
                             <div class="gallery-image"><img src="media/img_6373.jpg" alt="Temple premises and entrance"></div>
-                            <h3>Temple Premises</h3>
+                            <h3 data-i18n="gallery5-title">Temple Premises</h3>
                         </div>
                     </div>
 
                     <div class="gallery-slide">
                         <div class="gallery-item">
                             <div class="gallery-image"><img src="media/img_6401.jpg" alt="Charitable service and community aid" loading="lazy"></div>
-                            <h3>Charitable Service</h3>
+                            <h3 data-i18n="gallery6-title">Charitable Service</h3>
                         </div>
                     </div>
                 </div>
@@ -245,8 +245,8 @@
 
     <!-- Location Section -->
     <section id="location">
-        <h2>Visit Us</h2>
-        <p class="section-subtitle">We welcome you to join our community and find peace</p>
+        <h2 data-i18n="location-title">Visit Us</h2>
+        <p class="section-subtitle" data-i18n="location-subtitle">We welcome you to join our community and find peace</p>
         
         <div class="location-container">
             <div class="location-main-info">
@@ -256,8 +256,8 @@
                             <span class="material-symbols-outlined">temple_hindu</span>
                         </div>
                         <div class="location-title">
-                            <h3>Devaloy Mandir</h3>
-                            <p>A Sacred Sanctuary for All</p>
+                            <h3 data-i18n="loc-card-title">Devaloy Mandir</h3>
+                            <p data-i18n="loc-card-sub">A Sacred Sanctuary for All</p>
                         </div>
                     </div>
 
@@ -265,23 +265,23 @@
                         <div class="detail-item-modern">
                             <span class="material-symbols-outlined">location_on</span>
                             <div>
-                                <h4>Address</h4>
-                                <p>8529 Commonwealth Blvd<br>Bellerose, NY 11426</p>
+                                <h4 data-i18n="loc-addr-label">Address</h4>
+                                <p data-i18n="loc-addr-val">8529 Commonwealth Blvd<br>Bellerose, NY 11426</p>
                             </div>
                         </div>
 
                         <div class="detail-item-modern">
                             <span class="material-symbols-outlined">schedule</span>
                             <div>
-                                <h4>Opening Hours</h4>
-                                <p>Mon - Fri: 6:00 AM - 9:00 PM<br>Sat - Sun: 8:00 AM - 8:00 PM</p>
+                                <h4 data-i18n="loc-hours-label">Opening Hours</h4>
+                                <p data-i18n="loc-hours-val">Mon - Fri: 6:00 AM - 9:00 PM<br>Sat - Sun: 8:00 AM - 8:00 PM</p>
                             </div>
                         </div>
 
                         <div class="detail-item-modern">
                             <span class="material-symbols-outlined">call</span>
                             <div>
-                                <h4>Contact</h4>
+                                <h4 data-i18n="loc-contact-label">Contact</h4>
                                 <p><a href="tel:6466431465">(646) 643-1465</a></p>
                                 <p><a href="tel:9172178885" style="font-size: 0.9rem; opacity: 0.8;">(917) 217-8885</a></p>
                             </div>
@@ -290,7 +290,7 @@
                         <div class="detail-item-modern">
                             <span class="material-symbols-outlined">mail</span>
                             <div>
-                                <h4>Email</h4>
+                                <h4 data-i18n="loc-email-label">Email</h4>
                                 <p><a href="mailto:contact@devaloymandir.org">contact@devaloymandir.org</a></p>
                             </div>
                         </div>
@@ -299,7 +299,7 @@
                     <div class="location-actions">
                         <a href="https://www.google.com/maps/dir/?api=1&destination=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426" target="_blank" class="btn-directions">
                             <span class="material-symbols-outlined">directions</span>
-                            Get Directions
+                            <span data-i18n="loc-get-dirs">Get Directions</span>
                         </a>
                     </div>
                 </div>
@@ -307,11 +307,11 @@
                 <div class="transport-info reveal-left" style="transition-delay: 0.2s;">
                     <div class="transport-item">
                         <span class="material-symbols-outlined">directions_car</span>
-                        <p><strong>Parking:</strong> Free street parking is available along Commonwealth Blvd and surrounding side streets.</p>
+                        <p><strong data-i18n="loc-park-label">Parking:</strong> <span data-i18n="loc-park-val">Free street parking is available along Commonwealth Blvd and surrounding side streets.</span></p>
                     </div>
                     <div class="transport-item">
                         <span class="material-symbols-outlined">directions_bus</span>
-                        <p><strong>Public Transport:</strong> Q1 and Q27 bus stops are within a 5-minute walking distance.</p>
+                        <p><strong data-i18n="loc-bus-label">Public Transport:</strong> <span data-i18n="loc-bus-val">Q1 and Q27 bus stops are within a 5-minute walking distance.</span></p>
                     </div>
                 </div>
             </div>
@@ -328,7 +328,7 @@
                 </div>
                 <div class="map-overlay-info">
                     <span class="material-symbols-outlined">info</span>
-                    <span>Located in the heart of Bellerose, Queens.</span>
+                    <span data-i18n="map-overlay">Located in the heart of Bellerose, Queens.</span>
                 </div>
             </div>
         </div>
@@ -336,19 +336,19 @@
 
     <!-- Donation Section -->
     <section id="donate" class="donation-section">
-        <h2>Support Our Mission</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.1rem; text-align: center;">Your generous contribution helps us maintain our temple and serve our community.</p>
+        <h2 data-i18n="donate-title">Support Our Mission</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.1rem; text-align: center;" data-i18n="donate-subtitle">Your generous contribution helps us maintain our temple and serve our community.</p>
         
         <div class="donation-container-layout">
             <!-- Left Side: Stripe Card Payments -->
             <form class="donation-form" id="donationForm">
                 <div class="form-header">
                     <span class="material-symbols-outlined">credit_card</span>
-                    <h3>Donate with Card</h3>
+                    <h3 data-i18n="card-donate-title">Donate with Card</h3>
                 </div>
                 
                 <div class="form-group">
-                    <label>Quick Selection</label>
+                    <label data-i18n="donate-quick-label">Quick Selection</label>
                     <div class="amount-options">
                         <button type="button" class="amount-btn" data-amount="25">$25</button>
                         <button type="button" class="amount-btn" data-amount="50">$50</button>
@@ -358,37 +358,37 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="customAmount">Custom Amount ($)</label>
+                    <label for="customAmount" data-i18n="donate-custom-label">Custom Amount ($)</label>
                     <input type="number" id="customAmount" name="customAmount" placeholder="Enter any amount" min="1" step="1">
                 </div>
 
                 <div class="form-group">
-                    <label for="donationType">Frequency</label>
+                    <label for="donationType" data-i18n="donate-freq-label">Frequency</label>
                     <select id="donationType" name="donationType" required>
-                        <option value="one-time">One-Time Gift</option>
-                        <option value="monthly">Monthly Support (Recommended)</option>
+                        <option value="one-time" data-i18n="freq-once">One-Time Gift</option>
+                        <option value="monthly" data-i18n="freq-monthly">Monthly Support (Recommended)</option>
                     </select>
                 </div>
 
-                <button type="submit" class="submit-btn">Continue to Secure Payment</button>
-                <p class="secure-note">🔒 Secured by <strong>Stripe</strong></p>
+                <button type="submit" class="submit-btn" data-i18n="donate-submit">Continue to Secure Payment</button>
+                <p class="secure-note">🔒 <span data-i18n="donate-secure">Secured by</span> <strong>Stripe</strong></p>
             </form>
 
             <!-- Right Side: Zelle (The "Best" way) -->
             <div class="zelle-box reveal">
-                <div class="zelle-badge">Most Efficient</div>
+                <div class="zelle-badge" data-i18n="zelle-badge">Most Efficient</div>
                 <div class="zelle-icon"><span class="material-symbols-outlined">payments</span></div>
                 <div class="zelle-info">
-                    <h3>Donate via Zelle</h3>
-                    <p>No processing fees. <strong>100%</strong> of your gift goes directly to the temple's programs.</p>
+                    <h3 data-i18n="zelle-title">Donate via Zelle</h3>
+                    <p data-i18n="zelle-desc">No processing fees. <strong>100%</strong> of your gift goes directly to the temple's programs.</p>
                     <div class="zelle-id-container">
                         <div class="zelle-id" id="zelleId">(646) 643-1465</div>
                         <button type="button" class="copy-btn" id="copyZelleBtn" aria-label="Copy Zelle ID">
                             <span class="material-symbols-outlined">content_copy</span>
                         </button>
                     </div>
-                    <div class="zelle-recipient">Recipient: <strong>Devaloy Mandir</strong></div>
-                    <p class="zelle-hint">Use your banking app to send your gift.</p>
+                    <div class="zelle-recipient"><span data-i18n="zelle-rec-label">Recipient:</span> <strong>Devaloy Mandir</strong></div>
+                    <p class="zelle-hint" data-i18n="zelle-hint">Use your banking app to send your gift.</p>
                 </div>
             </div>
         </div>
@@ -398,23 +398,23 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>About</h4>
+                <h4 data-i18n="foot-about-title">About</h4>
                 <ul>
-                    <li><a href="#about">Our Mission</a></li>
-                    <li><a href="#activities">Services</a></li>
-                    <li><a href="#location">Location</a></li>
+                    <li><a href="#about" data-i18n="foot-mission">Our Mission</a></li>
+                    <li><a href="#activities" data-i18n="foot-services">Services</a></li>
+                    <li><a href="#location" data-i18n="foot-location">Location</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Get Involved</h4>
+                <h4 data-i18n="foot-involved-title">Get Involved</h4>
                 <ul>
-                    <li><a href="#donate">Donate</a></li>
-                    <li><a href="#">Volunteer</a></li>
-                    <li><a href="#">Join Events</a></li>
+                    <li><a href="#donate" data-i18n="foot-donate">Donate</a></li>
+                    <li><a href="#" data-i18n="foot-volunteer">Volunteer</a></li>
+                    <li><a href="#" data-i18n="foot-join">Join Events</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Contact</h4>
+                <h4 data-i18n="foot-contact-title">Contact</h4>
                 <ul class="footer-phone-list">
                     <li><a href="tel:6466431465">(646) 643-1465</a></li>
                     <li><a href="tel:9172178885">(917) 217-8885</a></li>
@@ -423,16 +423,16 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Newsletter</h4>
-                <p style="margin-bottom: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.8);">Subscribe for updates and spiritual wisdom.</p>
+                <h4 data-i18n="foot-news-title">Newsletter</h4>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.8);" data-i18n="foot-news-desc">Subscribe for updates and spiritual wisdom.</p>
                 <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
                     <input type="email" placeholder="Your email" class="newsletter-input" required>
-                    <button type="submit" class="newsletter-btn">Join</button>
+                    <button type="submit" class="newsletter-btn" data-i18n="foot-news-btn">Join</button>
                 </form>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Devaloy Mandir. All rights reserved. Built with compassion and care.</p>
+            <p data-i18n="foot-copy">&copy; 2026 Devaloy Mandir. All rights reserved. Built with compassion and care.</p>
         </div>
     </footer>
     </main>
