@@ -223,13 +223,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function parseCSV(csv) {
-        const lines = csv.split(/\r?\n/).filter(l => l.trim());
-        if (lines.length < 2) return [];
-        const headers = lines[0].split(',').map(h => h.trim().replace(/[*"']/g, '').toLowerCase());
-        return lines.slice(1).map(line => {
-            const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+        if (!csv) return [];
+        
+        const result = [];
+        let row = [];
+        let col = "";
+        let inQuotes = false;
+
+        for (let i = 0; i < csv.length; i++) {
+            const char = csv[i];
+            const nextChar = csv[i + 1];
+
+            if (char === '"' && inQuotes && nextChar === '"') {
+                col += '"';
+                i++;
+            } else if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+                row.push(col.trim());
+                col = "";
+            } else if ((char === '\r' || char === '\n') && !inQuotes) {
+                if (col !== "" || row.length > 0) {
+                    row.push(col.trim());
+                    result.push(row);
+                }
+                row = [];
+                col = "";
+                if (char === '\r' && nextChar === '\n') i++;
+            } else {
+                col += char;
+            }
+        }
+        if (col !== "" || row.length > 0) {
+            row.push(col.trim());
+            result.push(row);
+        }
+
+        if (result.length < 2) return [];
+
+        // Clean headers
+        const headers = result[0].map(h => h.toLowerCase().replace(/[*"']/g, '').trim());
+        
+        return result.slice(1).map(r => {
             const event = {};
-            headers.forEach((h, i) => event[h] = values[i]?.trim().replace(/^"|"$/g, '') || '');
+            headers.forEach((h, i) => {
+                event[h] = r[i] ? r[i].replace(/^"|"$/g, '').trim() : '';
+            });
             return event;
         });
     }
