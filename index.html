@@ -12,6 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devaloy Mandir - Community & Spiritual Home</title>
+    
+    <!-- SEO & Social Media Preview (Open Graph) -->
+    <meta name="description" content="A sacred space for spiritual growth, community connection, and inner peace in Bellerose, Queens. Join us for meditation, prayer, and community events.">
+    <meta property="og:title" content="Devaloy Mandir - Community & Spiritual Home">
+    <meta property="og:description" content="A sacred sanctuary for all. Join our spiritual gatherings and community celebrations in NYC.">
+    <meta property="og:image" content="https://devaloynyc.org/media/img_8976.jpg">
+    <meta property="og:url" content="https://devaloynyc.org">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,14 +50,21 @@
     <!-- Navigation -->
     <nav aria-label="Primary">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">Devaloy Mandir</a>
+            <a href="#home" class="nav-logo" data-i18n="nav-logo">Devaloy Mandir</a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#activities">Activities</a></li>
-                <li><a href="#aims">Aims & Objective</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#donate">Donate</a></li>
+                <li><a href="#home" data-i18n="nav-home">Home</a></li>
+                <li><a href="#about" data-i18n="nav-about">About Us</a></li>
+                <li><a href="#activities" data-i18n="nav-activities">Activities</a></li>
+                <li><a href="#aims" data-i18n="nav-aims">Aims & Objective</a></li>
+                <li><a href="#gallery" data-i18n="nav-gallery">Gallery</a></li>
+                <li><a href="#donate" data-i18n="nav-donate">Donate</a></li>
+                <li class="lang-switcher-wrapper">
+                    <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+                        <option value="en">English</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                    </select>
+                </li>
             </ul>
             <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
                 <span></span>

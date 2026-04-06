@@ -1,7 +1,58 @@
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. CORE UI ELEMENTS ---
+    // --- 1. MULTI-LANGUAGE CONFIGURATION ---
+    const translations = {
+        'en': {
+            'nav-home': 'Home',
+            'nav-about': 'About Us',
+            'nav-activities': 'Activities',
+            'nav-aims': 'Aims & Objective',
+            'nav-gallery': 'Gallery',
+            'nav-donate': 'Donate',
+            'nav-logo': 'Devaloy Mandir'
+        },
+        'bn': {
+            'nav-home': 'হোম',
+            'nav-about': 'আমাদের সম্পর্কে',
+            'nav-activities': 'কার্যক্রম',
+            'nav-aims': 'লক্ষ্য ও উদ্দেশ্য',
+            'nav-gallery': 'গ্যালারি',
+            'nav-donate': 'দান করুন',
+            'nav-logo': 'দেবালয় মন্দির'
+        },
+        'hi': {
+            'nav-home': 'होम',
+            'nav-about': 'हमारे बारे में',
+            'nav-activities': 'गतिविधियाँ',
+            'nav-aims': 'लक्ष्य और उद्देश्य',
+            'nav-gallery': 'गैलरी',
+            'nav-donate': 'दान दें',
+            'nav-logo': 'देवालय मंदिर'
+        }
+    };
+
+    function updateLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+        localStorage.setItem('preferredLang', lang);
+        // Refresh events to pick up new language if available in Sheet
+        loadEvents();
+    }
+
+    const langSwitcher = document.getElementById('langSwitcher');
+    langSwitcher?.addEventListener('change', (e) => updateLanguage(e.target.value));
+
+    // Load saved language
+    const savedLang = localStorage.getItem('preferredLang') || 'en';
+    if (langSwitcher) langSwitcher.value = savedLang;
+    updateLanguage(savedLang);
+
+    // --- 2. CORE UI ELEMENTS ---
     const scrollProgress = document.createElement('div');
     scrollProgress.className = 'scroll-progress';
     document.body.appendChild(scrollProgress);
@@ -12,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     backToTop.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(backToTop);
 
-    // --- 2. DARK MODE ---
+    // --- 3. DARK MODE ---
     const darkModeBtn = document.createElement('button');
     darkModeBtn.className = 'dark-mode-toggle';
     darkModeBtn.innerHTML = '🌙';
@@ -32,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         darkModeBtn.innerHTML = isDark ? '☀️' : '🌙';
     });
 
-    // --- 3. SCROLL EFFECTS & NAV ---
+    // --- 4. SCROLL EFFECTS & NAV ---
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -60,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 4. HERO BUTTONS RESPONSIVENESS ---
+    // --- 5. HERO BUTTONS ---
     const heroDonateBtn = document.getElementById('heroDonateBtn');
     const heroFindBtn = document.getElementById('heroFindBtn');
     const mapUrl = 'https://www.google.com/maps/dir/?api=1&destination=85-29+Commonwealth+Blvd,+Bellerose,+NY+11426';
@@ -73,12 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(mapUrl, '_blank');
     });
 
-    // --- 5. FLYER POPUP (Once every 24h) ---
+    // --- 6. FLYER POPUP ---
     const flyerPopup = document.getElementById('flyerPopup');
     if (flyerPopup) {
         const lastShown = localStorage.getItem('flyerLastShown');
         const now = new Date().getTime();
-        // Show if never shown OR if more than 24 hours have passed
         if (!lastShown || (now - parseInt(lastShown)) > 24 * 60 * 60 * 1000) {
             setTimeout(() => {
                 flyerPopup.classList.add('is-open');
@@ -91,17 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
             flyerPopup.classList.remove('is-open');
             document.body.style.overflow = '';
         });
-
-        // Close on background click
-        flyerPopup.addEventListener('click', (e) => {
-            if (e.target === flyerPopup) {
-                flyerPopup.classList.remove('is-open');
-                document.body.style.overflow = '';
-            }
-        });
     }
 
-    // --- 6. REVEAL ANIMATIONS ---
+    // --- 7. REVEAL ANIMATIONS ---
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -125,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     initReveal();
 
-    // --- 7. MODAL SYSTEM ---
+    // --- 8. MODAL SYSTEM ---
     const detailModal = document.createElement('div');
     detailModal.className = 'detail-modal';
     detailModal.innerHTML = `
@@ -156,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     });
 
-    // --- 8. AIM CARDS (TILT & MODAL) ---
+    // --- 9. AIM CARDS ---
     document.querySelectorAll('.aim-card').forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
@@ -169,27 +211,29 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = card.querySelector('.aim-icon')?.innerHTML || '';
             const title = card.querySelector('h3')?.innerHTML || '';
             const desc = card.querySelector('p')?.innerHTML || '';
-            openModal(icon, title, desc + "<br><br>Our commitment to this objective is unwavering.");
+            openModal(icon, title, desc);
         });
     });
 
-    // --- 9. GALLERY CAROUSEL ---
+    // --- 10. GALLERY ---
     const track = document.getElementById('galleryTrack');
     const slides = Array.from(track?.querySelectorAll('.gallery-slide') || []);
     const dotsContainer = document.getElementById('galleryDots');
     let currentSlide = 0;
 
     if (track && slides.length > 0 && dotsContainer) {
-        dotsContainer.innerHTML = ''; // Clear existing
+        dotsContainer.innerHTML = '';
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.className = `gallery-dot ${i === 0 ? 'active' : ''}`;
-            dot.addEventListener('click', () => goToSlide(i));
+            dot.addEventListener('click', () => {
+                currentSlide = i;
+                updateGallery();
+            });
             dotsContainer.appendChild(dot);
         });
 
-        function goToSlide(i) {
-            currentSlide = i;
+        function updateGallery() {
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
             document.querySelectorAll('.gallery-dot').forEach((dot, idx) => {
                 dot.classList.toggle('active', idx === currentSlide);
@@ -197,14 +241,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         document.getElementById('galleryPrev')?.addEventListener('click', () => {
-            goToSlide((currentSlide - 1 + slides.length) % slides.length);
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateGallery();
         });
         document.getElementById('galleryNext')?.addEventListener('click', () => {
-            goToSlide((currentSlide + 1) % slides.length);
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateGallery();
         });
     }
 
-    // --- 10. GOOGLE SHEETS EVENTS ---
+    // --- 11. GOOGLE SHEETS EVENTS ---
     const grid = document.getElementById('eventsGrid');
     const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTKh0_gIOWVQT33inL_MrUSZX8dzmGBylCN-wtFY8eUHnB9haiz4ubbIxsLT1oRBcTICxtgeicimk-/pub?output=csv';
     window._allEventsData = [];
@@ -217,87 +263,64 @@ document.addEventListener('DOMContentLoaded', function() {
             window._allEventsData = parseCSV(csvData);
             renderEvents(window._allEventsData);
         } catch (e) {
-            console.error('Sheet load failed');
-            grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Events temporary unavailable.</p>';
+            console.error('Sheet failed');
         }
     }
 
     function parseCSV(csv) {
         if (!csv) return [];
-        
         const result = [];
-        let row = [];
-        let col = "";
-        let inQuotes = false;
-
+        let row = [], col = "", inQuotes = false;
         for (let i = 0; i < csv.length; i++) {
-            const char = csv[i];
-            const nextChar = csv[i + 1];
-
-            if (char === '"' && inQuotes && nextChar === '"') {
-                col += '"';
-                i++;
-            } else if (char === '"') {
-                inQuotes = !inQuotes;
-            } else if (char === ',' && !inQuotes) {
-                row.push(col.trim());
-                col = "";
-            } else if ((char === '\r' || char === '\n') && !inQuotes) {
-                if (col !== "" || row.length > 0) {
-                    row.push(col.trim());
-                    result.push(row);
-                }
-                row = [];
-                col = "";
-                if (char === '\r' && nextChar === '\n') i++;
-            } else {
-                col += char;
-            }
+            const char = csv[i], next = csv[i+1];
+            if (char === '"' && inQuotes && next === '"') { col += '"'; i++; }
+            else if (char === '"') inQuotes = !inQuotes;
+            else if (char === ',' && !inQuotes) { row.push(col.trim()); col = ""; }
+            else if ((char === '\r' || char === '\n') && !inQuotes) {
+                if (col !== "" || row.length > 0) { row.push(col.trim()); result.push(row); }
+                row = []; col = ""; if (char === '\r' && next === '\n') i++;
+            } else col += char;
         }
-        if (col !== "" || row.length > 0) {
-            row.push(col.trim());
-            result.push(row);
-        }
-
+        if (col !== "" || row.length > 0) { row.push(col.trim()); result.push(row); }
         if (result.length < 2) return [];
-
-        // Clean headers
         const headers = result[0].map(h => h.toLowerCase().replace(/[*"']/g, '').trim());
-        
         return result.slice(1).map(r => {
-            const event = {};
-            headers.forEach((h, i) => {
-                event[h] = r[i] ? r[i].replace(/^"|"$/g, '').trim() : '';
-            });
-            return event;
+            const ev = {};
+            headers.forEach((h, i) => ev[h] = r[i] ? r[i].replace(/^"|"$/g, '').trim() : '');
+            return ev;
         });
     }
 
     function renderEvents(events) {
-        if (!events.length) return;
-        const months = { 'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3, 'may': 4, 'jun': 5, 'jul': 6, 'aug': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11 };
+        const currentLang = localStorage.getItem('preferredLang') || 'en';
+        
+        // Sorting and dynamic language handling
         events.sort((a, b) => {
-            const p = (d) => {
+            const parseDate = (d) => {
                 if (d.includes('/')) {
                     const [m, day, y] = d.split('/');
                     return new Date(y, m-1, day);
                 }
-                const parts = d.toLowerCase().split(' ');
-                return new Date(2026, months[parts[0]?.substring(0,3)] || 0, parseInt(parts[1]) || 1);
+                return new Date(2026, 0, 1);
             };
-            return p(a.date) - p(b.date);
+            return parseDate(a.date) - parseDate(b.date);
         });
 
-        grid.innerHTML = events.map((ev, i) => `
+        grid.innerHTML = events.map((ev, i) => {
+            // Support for language-specific columns in Sheet (e.g. Title_bn, Description_bn)
+            const title = ev[`title_${currentLang}`] || ev['title'];
+            const desc = ev[`description_${currentLang}`] || ev['description'];
+            
+            return `
             <div class="event-card reveal">
                 ${ev.imageurl ? `<img src="${ev.imageurl}" class="event-image" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">` : ''}
                 <div class="event-date">${ev.date}</div>
-                <h3>${ev.title}</h3>
+                <h3>${title}</h3>
                 <div class="event-meta"><span>🕒 ${ev.time}</span> • <span>${ev.day}</span></div>
-                <p class="event-desc">${ev.description}</p>
+                <p class="event-desc">${desc}</p>
                 <div class="event-actions"><button class="event-btn" onclick="showEv(${i})">Details</button></div>
             </div>
-        `).join('');
+        `;}).join('');
         
         document.querySelectorAll('.event-card').forEach(card => revealObserver.observe(card));
     }
@@ -305,21 +328,24 @@ document.addEventListener('DOMContentLoaded', function() {
     window.showEv = (i) => {
         const ev = window._allEventsData[i];
         if (!ev) return;
+        const currentLang = localStorage.getItem('preferredLang') || 'en';
+        const title = ev[`title_${currentLang}`] || ev['title'];
+        const descText = ev[`description_${currentLang}`] || ev['description'];
+        
         const iconHtml = ev.imageurl ? `<img src="${ev.imageurl}" style="width:80px; height:80px; border-radius:50%; object-fit:cover;">` : '📅';
-        const desc = `<div style="text-align:left; margin-top:1rem;">
+        const modalDesc = `<div style="text-align:left; margin-top:1rem;">
             <div style="background:#f8f1e3; padding:1rem; border-radius:10px; margin-bottom:1rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
                 <span>📅 <strong>${ev.date}</strong></span>
                 <span>🕒 <strong>${ev.time}</strong></span>
-                <span>✨ <strong>${ev.day}</strong></span>
             </div>
-            ${ev.description}
+            ${descText}
         </div>`;
-        openModal(iconHtml, ev.title, desc);
+        openModal(iconHtml, title, modalDesc);
     };
 
     loadEvents();
 
-    // --- 11. DONATIONS ---
+    // --- 12. DONATIONS ---
     const donationForm = document.getElementById('donationForm');
     donationForm?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -343,16 +369,15 @@ document.addEventListener('DOMContentLoaded', function() {
             navigator.clipboard.writeText(id).then(() => {
                 const btn = document.getElementById('copyZelleBtn');
                 const icon = btn.querySelector('span');
-                const original = icon.textContent;
                 icon.textContent = 'check';
-                setTimeout(() => icon.textContent = original, 2000);
+                setTimeout(() => icon.textContent = 'content_copy', 2000);
             });
         }
     });
 
     // Ripple effect
     document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn, .event-btn, .submit-btn, .amount-btn, .btn-directions');
+        const btn = e.target.closest('.btn, .event-btn, .submit-btn, .amount-btn');
         if (btn) {
             const ripple = document.createElement('span');
             ripple.className = 'ripple';
@@ -362,15 +387,5 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.appendChild(ripple);
             setTimeout(() => ripple.remove(), 600);
         }
-    });
-
-    // Donation amount button selection
-    document.querySelectorAll('.amount-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const customInput = document.getElementById('customAmount');
-            if (customInput) customInput.value = btn.getAttribute('data-amount');
-        });
     });
 });
