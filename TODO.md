@@ -75,7 +75,14 @@
 - [x] Added active nav link highlighting
 - [x] Added staggered animations for card grids
 
-#### 13. Keyframe Animations
+#### 13. Visual Design Improvements (Continued)
+- [x] Added dynamic, animated background for index.html (backgroundGlow animation)
+- [x] Enhanced section containers with card-like styling (glassmorphism/blur effect)
+- [x] Fixed Donation section visibility and brand colors within the new container layout
+- [x] Improved visual separation between page background and content containers
+
+#### 14. Keyframe Animations (Updated)
+- [x] added backgroundGlow for dynamic body movement
 - [x] fadeInUp
 - [x] bounce
 - [x] scrollDown
