@@ -412,9 +412,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1500);
         }
 
-        document.getElementById('flyerCloseBtn')?.addEventListener('click', () => {
+        const closeFlyer = () => {
             flyerPopup.classList.remove('is-open');
             document.body.style.overflow = '';
+        };
+
+        document.getElementById('flyerCloseBtn')?.addEventListener('click', closeFlyer);
+
+        // Allow visitors to dismiss the announcement by clicking outside it or pressing Escape.
+        flyerPopup.addEventListener('click', (event) => {
+            if (event.target === flyerPopup) closeFlyer();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && flyerPopup.classList.contains('is-open')) {
+                closeFlyer();
+            }
         });
     }
 

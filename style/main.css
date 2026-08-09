@@ -218,28 +218,107 @@
         }
 
         .flyer-message {
-            padding: 2.75rem 2.5rem 2.25rem;
-            color: #1a3a3a;
+            position: relative;
+            padding: 2.75rem 3.25rem 2rem;
+            color: #3b2924;
             font-family: 'Manrope', sans-serif;
             line-height: 1.65;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(214, 145, 58, 0.2), transparent 25%),
+                radial-gradient(circle at 90% 100%, rgba(122, 46, 46, 0.12), transparent 30%),
+                #fbf1df;
         }
 
-        .flyer-message h2 {
-            margin: 0 2rem 1.5rem 0;
-            color: #7a2e2e;
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.55rem, 4vw, 2.35rem);
-            line-height: 1.2;
+        .flyer-message::before,
+        .flyer-message::after {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c58a3a 20%, #c58a3a 80%, transparent);
+        }
+
+        .flyer-message::before { top: 1rem; }
+        .flyer-message::after { bottom: 1rem; }
+
+        .flyer-top-ornament,
+        .flyer-bottom-ornament {
+            color: #b47627;
             text-align: center;
         }
 
-        .flyer-message p {
-            margin: 0 0 1rem;
+        .flyer-top-ornament .material-symbols-outlined {
+            font-size: 2.4rem;
+            font-variation-settings: 'FILL' 1, 'wght' 500;
+        }
+
+        .flyer-eyebrow {
+            margin: 0.35rem 0 0.5rem !important;
+            color: #b47627;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .flyer-message h2 {
+            margin: 0 2rem 1rem;
+            color: #762f2c;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.55rem, 4vw, 2.35rem);
+            line-height: 1.15;
+            text-align: center;
+        }
+
+        .flyer-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin: 0 auto 1.5rem;
+            max-width: 250px;
+            color: #b47627;
+        }
+
+        .flyer-divider::before,
+        .flyer-divider::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: #d5a45e;
+        }
+
+        .flyer-divider span { font-size: 0.85rem; }
+        .flyer-message p { margin: 0 0 1rem; }
+        .flyer-greeting { font-weight: 700; color: #762f2c; }
+
+        .flyer-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin: 1.25rem 0 !important;
+            padding: 0.9rem 1rem;
+            border-left: 3px solid #c58a3a;
+            border-radius: 0 10px 10px 0;
+            background: rgba(197, 138, 58, 0.12);
+            color: #762f2c;
+            font-weight: 700;
+        }
+
+        .flyer-highlight .material-symbols-outlined {
+            color: #b47627;
+            font-size: 1.35rem;
+            flex: 0 0 auto;
         }
 
         .flyer-signoff {
             margin-top: 1.5rem !important;
+            text-align: right;
         }
+
+        .flyer-signoff strong { color: #762f2c; }
+        .flyer-bottom-ornament { margin-top: 1.25rem; font-size: 0.85rem; letter-spacing: 0.2em; }
 
         @media (max-width: 600px) {
             .flyer-popup {
@@ -255,20 +334,28 @@
             }
 
             .flyer-message {
-                padding: 3.25rem 1rem 1.25rem;
+                padding: 2.75rem 1rem 1.75rem;
                 font-size: 0.9rem;
                 line-height: 1.5;
             }
 
-            .flyer-message h2 {
-                margin: 0 2.25rem 1.25rem 0;
+            .event-feature {
+                width: calc(100% - 1rem);
+                padding: 1.5rem 1rem 1.25rem;
+                font-size: 0.88rem;
+            }
+
+            .flyer-message h2,
+            .event-feature h3 {
+                margin: 0 1rem 1rem;
                 font-size: 1.45rem;
                 line-height: 1.2;
             }
 
-            .flyer-message p {
-                margin-bottom: 0.85rem;
-            }
+            .flyer-message p { margin-bottom: 0.85rem; }
+            .flyer-divider { margin-bottom: 1.15rem; }
+            .flyer-highlight { padding: 0.75rem; }
+            .flyer-signoff { text-align: left; }
 
         }
 
@@ -278,14 +365,27 @@
             right: 10px;
             width: 40px;
             height: 40px;
-            border: none;
+            border: 2px solid rgba(255, 255, 255, 0.9);
             border-radius: 50%;
-            background: rgba(26, 58, 58, 0.92);
+            background: #762f2c;
             color: #fff;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
             cursor: pointer;
             display: grid;
             place-items: center;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .flyer-close:hover,
+        .flyer-close:focus-visible {
+            background: #a54a3d;
+            transform: scale(1.06);
+            outline: 3px solid rgba(197, 138, 58, 0.45);
+            outline-offset: 2px;
         }
 
         @media (max-width: 600px) {
@@ -304,6 +404,31 @@
             text-align: center;
             color: var(--color-primary);
             font-weight: 600;
+        }
+
+        .event-feature {
+            width: min(780px, 94%);
+            margin: 1.5rem auto 2.5rem;
+            padding: 2rem 2.5rem 1.5rem;
+            border: 1px solid rgba(197, 138, 58, 0.45);
+            border-radius: 18px;
+            box-shadow: 0 16px 40px rgba(74, 42, 28, 0.16);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .event-feature h3 {
+            margin: 0 2rem 1rem;
+            color: #762f2c;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .event-feature-copy {
+            max-width: 760px;
+            margin: 0 auto;
         }
 
         /* Navigation */
