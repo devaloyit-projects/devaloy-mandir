@@ -510,34 +510,77 @@ document.addEventListener('DOMContentLoaded', function() {
     const slides = Array.from(track?.querySelectorAll('.gallery-slide') || []);
     const dotsContainer = document.getElementById('galleryDots');
     let currentSlide = 0;
+    let galleryTimer;
+    let galleryPaused = false;
 
     if (track && slides.length > 0 && dotsContainer) {
+        const viewport = track.closest('.gallery-viewport');
+        const autoplayButton = document.getElementById('galleryAutoplay');
+        const autoplayIcon = autoplayButton?.querySelector('.material-symbols-outlined');
+        const autoplayLabel = autoplayButton?.querySelector('.gallery-autoplay-label');
+        const setAutoplayText = () => {
+            const lang = localStorage.getItem('preferredLang') || 'en';
+            const labels = {
+                en: { pause: 'Pause slideshow', play: 'Play slideshow' },
+                bn: { pause: 'স্লাইডশো থামান', play: 'স্লাইডশো চালান' },
+                hi: { pause: 'स्लाइडशो रोकें', play: 'स्लाइडशो चलाएं' }
+            };
+            const text = labels[lang] || labels.en;
+            autoplayLabel.textContent = galleryPaused ? text.play : text.pause;
+            autoplayIcon.textContent = galleryPaused ? 'play_arrow' : 'pause';
+            autoplayButton.setAttribute('aria-pressed', String(!galleryPaused));
+        };
+
         dotsContainer.innerHTML = '';
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.className = `gallery-dot ${i === 0 ? 'active' : ''}`;
-            dot.addEventListener('click', () => {
-                currentSlide = i;
-                updateGallery();
-            });
+            dot.type = 'button';
+            dot.setAttribute('aria-label', `Show gallery slide ${i + 1}`);
+            dot.addEventListener('click', () => { currentSlide = i; updateGallery(); restartGallery(); });
             dotsContainer.appendChild(dot);
         });
 
         function updateGallery() {
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            document.querySelectorAll('.gallery-dot').forEach((dot, idx) => {
+            dotsContainer.querySelectorAll('.gallery-dot').forEach((dot, idx) => {
                 dot.classList.toggle('active', idx === currentSlide);
+                dot.setAttribute('aria-current', idx === currentSlide ? 'true' : 'false');
             });
+        }
+
+        function nextGallerySlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateGallery();
+        }
+
+        function restartGallery() {
+            clearInterval(galleryTimer);
+            if (!galleryPaused) galleryTimer = setInterval(nextGallerySlide, 5000);
         }
 
         document.getElementById('galleryPrev')?.addEventListener('click', () => {
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateGallery();
+            updateGallery(); restartGallery();
         });
         document.getElementById('galleryNext')?.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateGallery();
+            nextGallerySlide(); restartGallery();
         });
+        autoplayButton?.addEventListener('click', () => {
+            galleryPaused = !galleryPaused;
+            setAutoplayText(); restartGallery();
+        });
+        viewport?.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') { event.preventDefault(); document.getElementById('galleryPrev')?.click(); }
+            if (event.key === 'ArrowRight') { event.preventDefault(); document.getElementById('galleryNext')?.click(); }
+        });
+        viewport?.addEventListener('mouseenter', () => clearInterval(galleryTimer));
+        viewport?.addEventListener('mouseleave', restartGallery);
+        viewport?.addEventListener('touchstart', () => clearInterval(galleryTimer), { passive: true });
+        viewport?.addEventListener('touchend', restartGallery, { passive: true });
+        setAutoplayText();
+        updateGallery();
+        restartGallery();
     }
 
     // --- 11. GOOGLE SHEETS EVENTS ---
