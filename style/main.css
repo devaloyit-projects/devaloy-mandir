@@ -207,10 +207,9 @@
         }
 
         .flyer-popup-content {
-            width: auto;
-            max-width: 92vw;
+            width: min(760px, 92vw);
             max-height: 88vh;
-            overflow: hidden;
+            overflow: auto;
             border-radius: 18px;
             background: #f6e2c5;
             box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
@@ -218,13 +217,59 @@
             position: relative;
         }
 
-        .flyer-image {
-            display: block;
-            width: auto;
-            max-width: 92vw;
-            max-height: 88vh;
-            object-fit: contain;
-            border-radius: 18px;
+        .flyer-message {
+            padding: 2.75rem 2.5rem 2.25rem;
+            color: #1a3a3a;
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.65;
+        }
+
+        .flyer-message h2 {
+            margin: 0 2rem 1.5rem 0;
+            color: #7a2e2e;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.55rem, 4vw, 2.35rem);
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .flyer-message p {
+            margin: 0 0 1rem;
+        }
+
+        .flyer-signoff {
+            margin-top: 1.5rem !important;
+        }
+
+        @media (max-width: 600px) {
+            .flyer-popup {
+                align-items: flex-start;
+                padding: 0.5rem;
+            }
+
+            .flyer-popup-content {
+                width: 100%;
+                max-width: none;
+                max-height: calc(100vh - 1rem);
+                border-radius: 12px;
+            }
+
+            .flyer-message {
+                padding: 3.25rem 1rem 1.25rem;
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .flyer-message h2 {
+                margin: 0 2.25rem 1.25rem 0;
+                font-size: 1.45rem;
+                line-height: 1.2;
+            }
+
+            .flyer-message p {
+                margin-bottom: 0.85rem;
+            }
+
         }
 
         .flyer-close {
@@ -241,6 +286,17 @@
             cursor: pointer;
             display: grid;
             place-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .flyer-close {
+                top: 8px;
+                right: 8px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+                z-index: 1;
+            }
         }
 
         .flyer-fallback {
